@@ -1,0 +1,16 @@
+
+[identity-server]
+AccessTokenURL = https://localhost:9443/oauth2/token
+UserInfoURL = https://localhost:9443/oauth2/userinfo?schema=openid
+ClientKey =
+ClientSecret =
+TenantDomain =
+
+[credentials]
+Username =
+Password =
+GatewayID =
+
+[airavata-api-server]
+Hostname = localhost
+Port = 8930
