@@ -20,13 +20,19 @@ I decided to use Docker to run Thrift 0.10.0, but that isn't necessary. To
 use Docker for Thrift
 * download [Thrift 0.10.0 tarball](https://thrift.apache.org/) and untar it
 * in thrift-0.10.0 run the following
-      docker build -t thrift-0.10.0 .
+```
+docker build -t thrift-0.10.0 .
+```
 * checkout [airavata](https://git-wip-us.apache.org/repos/asf?p=airavata.git) and run thrift
-      cd airavata/thrift-interface-descriptions
-      mkdir target
-      docker run --rm -v "$PWD:/data" thrift-0.10.0 --gen py -r -o /data/target /data/airavata-apis/airavata_api.thrift
+```
+cd airavata/thrift-interface-descriptions
+mkdir target
+docker run --rm -v "$PWD:/data" thrift-0.10.0 --gen py -r -o /data/target /data/airavata-apis/airavata_api.thrift
+```
 * then copy the generated files into the current directory
-      cp -r target/gen-py/ /path/to/this/repo
+```
+cp -r target/gen-py/ /path/to/this/repo
+```
 
 ## Error: DataReplicaLocationModel is not defined
 
