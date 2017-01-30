@@ -63,7 +63,7 @@ class DataProductType(object):
         "COLLECTION": 1,
     }
 
-# TODO: manually modified file so that this comes BEFORE DataProductModel
+
 class DataReplicaLocationModel(object):
     """
     Attributes:
@@ -178,11 +178,11 @@ class DataReplicaLocationModel(object):
             elif fid == 12:
                 if ftype == TType.MAP:
                     self.replicaMetadata = {}
-                    (_ktype17, _vtype18, _size16) = iprot.readMapBegin()
-                    for _i20 in range(_size16):
-                        _key21 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                        _val22 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                        self.replicaMetadata[_key21] = _val22
+                    (_ktype1, _vtype2, _size0) = iprot.readMapBegin()
+                    for _i4 in range(_size0):
+                        _key5 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                        _val6 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                        self.replicaMetadata[_key5] = _val6
                     iprot.readMapEnd()
                 else:
                     iprot.skip(ftype)
@@ -243,9 +243,9 @@ class DataReplicaLocationModel(object):
         if self.replicaMetadata is not None:
             oprot.writeFieldBegin('replicaMetadata', TType.MAP, 12)
             oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.replicaMetadata))
-            for kiter23, viter24 in self.replicaMetadata.items():
-                oprot.writeString(kiter23.encode('utf-8') if sys.version_info[0] == 2 else kiter23)
-                oprot.writeString(viter24.encode('utf-8') if sys.version_info[0] == 2 else viter24)
+            for kiter7, viter8 in self.replicaMetadata.items():
+                oprot.writeString(kiter7.encode('utf-8') if sys.version_info[0] == 2 else kiter7)
+                oprot.writeString(viter8.encode('utf-8') if sys.version_info[0] == 2 else viter8)
             oprot.writeMapEnd()
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -264,6 +264,7 @@ class DataReplicaLocationModel(object):
 
     def __ne__(self, other):
         return not (self == other)
+
 
 class DataProductModel(object):
     """
@@ -374,22 +375,22 @@ class DataProductModel(object):
             elif fid == 11:
                 if ftype == TType.MAP:
                     self.productMetadata = {}
-                    (_ktype1, _vtype2, _size0) = iprot.readMapBegin()
-                    for _i4 in range(_size0):
-                        _key5 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                        _val6 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                        self.productMetadata[_key5] = _val6
+                    (_ktype10, _vtype11, _size9) = iprot.readMapBegin()
+                    for _i13 in range(_size9):
+                        _key14 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                        _val15 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                        self.productMetadata[_key14] = _val15
                     iprot.readMapEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 12:
                 if ftype == TType.LIST:
                     self.replicaLocations = []
-                    (_etype10, _size7) = iprot.readListBegin()
-                    for _i11 in range(_size7):
-                        _elem12 = DataReplicaLocationModel()
-                        _elem12.read(iprot)
-                        self.replicaLocations.append(_elem12)
+                    (_etype19, _size16) = iprot.readListBegin()
+                    for _i20 in range(_size16):
+                        _elem21 = DataReplicaLocationModel()
+                        _elem21.read(iprot)
+                        self.replicaLocations.append(_elem21)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
@@ -446,16 +447,16 @@ class DataProductModel(object):
         if self.productMetadata is not None:
             oprot.writeFieldBegin('productMetadata', TType.MAP, 11)
             oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.productMetadata))
-            for kiter13, viter14 in self.productMetadata.items():
-                oprot.writeString(kiter13.encode('utf-8') if sys.version_info[0] == 2 else kiter13)
-                oprot.writeString(viter14.encode('utf-8') if sys.version_info[0] == 2 else viter14)
+            for kiter22, viter23 in self.productMetadata.items():
+                oprot.writeString(kiter22.encode('utf-8') if sys.version_info[0] == 2 else kiter22)
+                oprot.writeString(viter23.encode('utf-8') if sys.version_info[0] == 2 else viter23)
             oprot.writeMapEnd()
             oprot.writeFieldEnd()
         if self.replicaLocations is not None:
             oprot.writeFieldBegin('replicaLocations', TType.LIST, 12)
             oprot.writeListBegin(TType.STRUCT, len(self.replicaLocations))
-            for iter15 in self.replicaLocations:
-                iter15.write(oprot)
+            for iter24 in self.replicaLocations:
+                iter24.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -474,5 +475,3 @@ class DataProductModel(object):
 
     def __ne__(self, other):
         return not (self == other)
-
-

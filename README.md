@@ -59,5 +59,7 @@ cp -r target/gen-py/ /path/to/this/repo
 
 Problem is that DataReplicaLocationModel is defined after DataProductModel
 
-Solution was to reorder the generated Python code.
+<del>Solution was to reorder the generated Python code.</del> I've now reordered
+the models in the source Thrift IDL file to resolve the problem. See also
+https://issues.apache.org/jira/browse/THRIFT-3783
 
