@@ -12,6 +12,7 @@ python3 -m venv ENV
 ```
 pip install -r requirements.txt
 ```
+* run the test script: `python test.py`
 
 # Generating Thrift Stubs
 
