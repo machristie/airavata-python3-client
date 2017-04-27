@@ -42,6 +42,7 @@ class ResourceJobManagerType(object):
     LSF = 3
     UGE = 4
     CLOUD = 5
+    AIRAVATA_CUSTOM = 6
 
     _VALUES_TO_NAMES = {
         0: "FORK",
@@ -50,6 +51,7 @@ class ResourceJobManagerType(object):
         3: "LSF",
         4: "UGE",
         5: "CLOUD",
+        6: "AIRAVATA_CUSTOM",
     }
 
     _NAMES_TO_VALUES = {
@@ -59,6 +61,7 @@ class ResourceJobManagerType(object):
         "LSF": 3,
         "UGE": 4,
         "CLOUD": 5,
+        "AIRAVATA_CUSTOM": 6,
     }
 
 
