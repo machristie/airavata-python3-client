@@ -1,3 +1,4 @@
 ENV
 airavata-client.ini
 *.pyc
+.DS_Store

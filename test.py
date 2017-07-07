@@ -14,6 +14,9 @@ from thrift.protocol import TBinaryProtocol
 
 import configparser
 
+# For Keycloak the username is in the 'preferred_username' claim of the userinfo response
+username_claim = 'preferred_username'
+
 def get_transport(hostname, port):
     # Create a socket to the Airavata Server
     # TODO: validate server certificate
@@ -35,10 +38,13 @@ def get_authz_token(accessTokenURL, userInfoURL, clientKey, clientSecret, userna
     
     request_data = {'grant_type': 'password', 'scope': 'openid', 'username': username, 'password': password}
     access_token_req = requests.post(accessTokenURL, auth=(clientKey, clientSecret), data=request_data, verify=False)
-    access_token = access_token_req.json()['access_token']
+    access_token_json = access_token_req.json()
+    if 'access_token' not in access_token_json:
+        raise Exception("Failed to get access_token: {}".format(access_token_json))
+    access_token = access_token_json['access_token']
     user_info_req = requests.get(userInfoURL, headers={'Authorization': "Bearer " + access_token}, verify=False)
-    
-    return AuthzToken(accessToken=access_token, claimsMap={'gatewayID': gatewayID, 'userName': user_info_req.json()['sub']})
+
+    return AuthzToken(accessToken=access_token, claimsMap={'gatewayID': gatewayID, 'userName': user_info_req.json()[username_claim]})
 
 def get_all_projects(airavataClient, authzToken, gatewayId, username):
 
@@ -59,7 +65,7 @@ if __name__ == '__main__':
     username = config['credentials']['Username']
     password = config['credentials']['Password']
     gatewayID = config['credentials']['GatewayID']
-    authz_token = get_authz_token(accessTokenURL, userInfoURL, clientKey, clientSecret, username + "@" + tenantDomain, password, gatewayID)
+    authz_token = get_authz_token(accessTokenURL, userInfoURL, clientKey, clientSecret, username, password, gatewayID)
     print(authz_token)
     
     hostname = config['airavata-api-server']['Hostname']
